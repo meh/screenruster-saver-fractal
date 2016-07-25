@@ -1,0 +1,20 @@
+[package]
+name    = "screenruster-saver-fractal"
+version = "0.1.0"
+
+authors = ["meh. <meh@schizofreni.co>"]
+license = "GPL-3.0"
+
+description = "Rectangles and shit."
+repository  = "https://github.com/meh/screenruster-saver-fractal"
+keywords    = ["saver", "screenruster", "x11"]
+
+[profile.release]
+debug = true
+
+[dependencies]
+palette            = "0.2"
+regex              = "0.1"
+rand               = "0.3"
+meval              = "0.0.4"
+screenruster-saver = "0.1"
