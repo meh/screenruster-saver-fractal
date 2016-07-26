@@ -1,28 +1,26 @@
 [[saver.fractal.define]]
 algorithm = "mandelbrot"
-scale     = 2.5
-iter      = 250
-
-[[saver.fractal.define]]
-algorithm  = "julia"
-gradient   = ["#000000", "#ff0000", "#cccc00", "#ffffff", "#cccc00", "#ff0000", "#000000"]
-
-# Generate the time based on the tick.
-t = "tick / 1000"
+gradient  = ["#000000", "#005500", "#00ff00", "#005500", "#000000"]
 
 # Number of iterations.
-iter = 250
+iter  = 250
 
-# Calculation for the seed.
-r = "(sin(cos(t / 10.0) * 10.0) + cos(t * 2.0) / 4.0 + sin(t * 3.0) / 6.0) * 0.8"
-i = "(cos(sin(t / 10.0) * 10.0) + sin(t * 2.0) / 4.0 + cos(t * 3.0) / 6.0) * 0.8"
+# Time point based on tick.
+t = "tick / 1000"
+
+# Scale of the generation.
+scale = "sin(t) * cos(t) * 2"
+
+# Coordinates for the center.
+x = "cos(t) / 1.05"
+y = "sin(t) / 1.5"
 
 [[saver.fractal.define]]
-algorithm  = "julia"
-gradient   = ["#000000", "#00aa00", "#00cccc", "#ffffff", "#00cccc", "#00aa00", "#000000"]
+algorithm = "julia"
+gradient  = ["#000000", "#ff0000", "#cccc00", "#ffffff", "#cccc00", "#ff0000", "#000000"]
 
 # Generate the time based on the tick.
-t = "tick / 1000"
+t = "tick / 2000"
 
 # Number of iterations.
 iter = 250
