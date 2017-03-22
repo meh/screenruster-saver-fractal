@@ -19,7 +19,7 @@ use std::rc::Rc;
 
 use rand::{self, Rng};
 
-use screen::{self, Password};
+use screen;
 use screen::json::JsonValue;
 use screen::gl::{self, Surface};
 use screen::image;
@@ -154,8 +154,7 @@ impl screen::Saver for Saver {
 	}
 
 	fn render<S: Surface>(&self, target: &mut S, _screen: &gl::texture::Texture2d) {
-		let gl     = self.gl.as_ref().unwrap();
-		let config = self.config.as_ref().unwrap();
+		let gl = self.gl.as_ref().unwrap();
 
 		if let Some(def) = self.definition.as_ref() {
 			match def.algorithm {

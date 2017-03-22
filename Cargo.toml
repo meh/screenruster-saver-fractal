@@ -14,7 +14,7 @@ debug = true
 
 [dependencies]
 palette            = "0.2"
-regex              = "0.1"
+regex              = "0.2"
 rand               = "0.3"
-meval              = "0.0.4"
+meval              = "0.0"
 screenruster-saver = "0.1"

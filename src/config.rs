@@ -15,6 +15,7 @@
 // You should have received a copy of the GNU General Public License
 // along with screenruster.  If not, see <http://www.gnu.org/licenses/>.
 
+use std::str::FromStr;
 use screen::json::JsonValue;
 use palette::{Gradient, Rgb};
 use regex::Regex;
@@ -154,9 +155,9 @@ impl Config {
 					if let Some(string) = color.as_str() {
 						if let Some(captures) = regex.captures(string) {
 							colors.push(Rgb::new_u8(
-								u8::from_str_radix(captures.at(1).unwrap_or("0"), 16).unwrap_or(0),
-								u8::from_str_radix(captures.at(2).unwrap_or("0"), 16).unwrap_or(0),
-								u8::from_str_radix(captures.at(3).unwrap_or("0"), 16).unwrap_or(0),
+								u8::from_str_radix(captures.get(1).map(|c| c.as_str()).unwrap_or("0"), 16).unwrap_or(0),
+								u8::from_str_radix(captures.get(2).map(|c| c.as_str()).unwrap_or("0"), 16).unwrap_or(0),
+								u8::from_str_radix(captures.get(3).map(|c| c.as_str()).unwrap_or("0"), 16).unwrap_or(0),
 							));
 						}
 					}
@@ -178,7 +179,7 @@ impl Config {
 							algorithm.iter = Expr::from_str(string).unwrap().bind("t").unwrap(),
 
 						JsonValue::Number(number) =>
-							algorithm.iter = box move |_| number,
+							algorithm.iter = box move |_| number.into(),
 
 						_ => ()
 					}
@@ -188,7 +189,7 @@ impl Config {
 							algorithm.scale = Expr::from_str(string).unwrap().bind("t").unwrap(),
 
 						JsonValue::Number(number) =>
-							algorithm.scale = box move |_| number,
+							algorithm.scale = box move |_| number.into(),
 
 						_ => ()
 					}
@@ -216,7 +217,7 @@ impl Config {
 							algorithm.iter = Expr::from_str(string).unwrap().bind("t").unwrap(),
 
 						JsonValue::Number(number) =>
-							algorithm.iter = box move |_| number,
+							algorithm.iter = box move |_| number.into(),
 
 						_ => ()
 					}
